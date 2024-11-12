@@ -1,4 +1,5 @@
 console.log("Web serverni boshlash");
+const { render } = require("ejs");
 const express = require("express");
 const app = express();
 const http = require("http");
@@ -16,12 +17,21 @@ app.set("views", "views");
 app.set("view engine", "ejs");
 
 //4: ROUTING CODES
-app.get("/hello", function (req, res) {
-  res.end(`Hello World`);
+//app.get("/hello", function (req, res) {
+//res.end(`Hello World`);
+//});
+
+//app.get("/gift", function (req, res) {
+//res.end(`Siz sovgalar bolimidasiz`);
+//});
+
+app.get("/", function (req, res) {
+  res.render("Harid");
 });
 
-app.get("/gift", function (req, res) {
-  res.end(`Siz sovgalar bolimidasiz`);
+app.post("/create-item", (req, res) => {
+  console.log(req.body);
+  res.json({ test: "success" });
 });
 
 const server = http.createServer(app);
