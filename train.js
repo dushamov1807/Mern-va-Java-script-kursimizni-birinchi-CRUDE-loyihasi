@@ -107,3 +107,15 @@ console.log("passed here 1");
 //console.log(javob);
 //}
 //run();
+
+function countDigits(inputString) {
+  let count = 0;
+  for (let i = 0; i < inputString.length; i++) {
+    if (inputString[i] >= "0" && inputString[i] <= "9") {
+      count++;
+    }
+  }
+  return count;
+}
+
+console.log(countDigits("ad2a54y79wet0sfgb9"));
