@@ -1,15 +1,16 @@
-console.log("FrontEnd Js ishga tushdi");
+//const { response } = require("../app");
 
-function itemTemplate(item) {
+//console.log("FrontEnd Js ishga tushdi");
+
+function itemtemplate(item) {
   return `<li
           class="list-group-item list-group-item-info d-flex align-items-center justify-content-between"
         >
-          <span class="item-text">${item._reja}</span>
+          <span class="item-text">${item.reja}</span>
           <div>
             <button
               data-id="${item._id}"
-              class=""
-              ="edit-me btn btn-secondary btn-sm mr-1">
+              class="edit-me btn btn-secondary btn-sm mr-1">
               Ozgartirish
             </button>
             <button
@@ -28,12 +29,35 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
     .post("/create-item", { reja: createField.value })
     .then((response) => {
       document
-        .getElementById("Item-list")
-        .insertAdjacentHTML("beforeend", itemTemplate(response.data));
+        .getElementById("item-list")
+        .insertAdjacentHTML("beforeend", itemtemplate(response.data));
       createField.value = "";
       createField.focus();
     })
     .catch((err) => {
       console.log("Iltimos qaytattan harakat qilib koring");
     });
+});
+
+document.addEventListener("click", function (e) {
+  //delete operation
+  console.log(e.target);
+  if (e.target.classList.contains("delete-me")) {
+    if (confirm("Aniq ochirmoqchimisiz?")) {
+      axios
+        .post("/delete-item", { id: e.target.getAttribute("data-id") })
+        .then((response) => {
+          console.log(response.data);
+          e.target.parentElement.parentElement.remove();
+        })
+        .catch((err) => {
+          console.log("Iltimos qaytattan harakat qilib koring");
+        });
+    }
+  }
+
+  //edit operation
+  if (e.target.classList.contains("edit-me")) {
+    alert("siz edit tugmasini bosdingiz");
+  }
 });

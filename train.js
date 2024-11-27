@@ -119,3 +119,41 @@ function countDigits(inputString) {
 }
 
 console.log(countDigits("ad2a54y79wet0sfgb9"));
+
+//mit task c
+
+class Shop {
+  constructor(non, lagmon, cola) {
+    this.non = non;
+    this.lagmon = lagmon;
+    this.cola = cola;
+  }
+
+  qoldiq() {
+    const vaqt = new Date().toLocaleTimeString();
+    console.log(
+      `${vaqt} da ${this.non}ta non, ${this.lagmon}ta lagmon va ${this.cola}ta cola mavjud!`
+    );
+  }
+
+  sotish(mahsulot, miqdor) {
+    if (mahsulot === "non") this.non -= miqdor;
+    if (mahsulot === "lagmon") this.lagmon -= miqdor;
+    if (mahsulot === "cola") this.cola -= miqdor;
+    console.log(`${mahsulot} sotildi ${miqdor}ta`);
+  }
+
+  qabul(mahsulot, miqdor) {
+    if (mahsulot === "non") this.non += miqdor;
+    if (mahsulot === "lagmon") this.lagmon += miqdor;
+    if (mahsulot === "cola") this.cola += miqdor;
+    console.log(`${mahsulot} qabul qilindi ${miqdor}ta`);
+  }
+}
+
+// Misol
+const shop = new Shop(4, 5, 2);
+shop.qoldiq();
+shop.sotish("non", 3);
+shop.qabul("cola", 4);
+shop.qoldiq();
