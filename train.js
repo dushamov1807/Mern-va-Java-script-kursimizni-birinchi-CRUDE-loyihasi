@@ -157,3 +157,13 @@ shop.qoldiq();
 shop.sotish("non", 3);
 shop.qabul("cola", 4);
 shop.qoldiq();
+
+//MIT Task D
+
+function checkContent(str1, str2) {
+  return str1.split("").sort().join("") === str2.split("").sort().join("");
+}
+
+// Misol
+console.log(checkContent("mitgroup", "gmtiprou")); // true
+console.log(checkContent("hello", "world")); // false
