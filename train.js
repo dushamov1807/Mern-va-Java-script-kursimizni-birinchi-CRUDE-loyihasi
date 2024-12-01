@@ -167,3 +167,13 @@ function checkContent(str1, str2) {
 // Misol
 console.log(checkContent("mitgroup", "gmtiprou")); // true
 console.log(checkContent("hello", "world")); // false
+
+//MITTASK E
+
+function getReverse(s) {
+  if (s.length === 0) {
+    return s;
+  } else {
+    return getReverse(s.slice(1)) + s[0];
+  }
+}
